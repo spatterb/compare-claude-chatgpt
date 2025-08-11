@@ -1,0 +1,42 @@
+{
+  "name": "Ubuntu Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.pylint",
+        "ms-python.black-formatter",
+        "ms-vscode.vscode-json"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
+        "editor.formatOnSave": true,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true
+      }
+    }
+  },
+
+  "onCreateCommand": [
+    "bash", "-c", 
+    "echo 'Container created, running initial setup...' && pip install --upgrade pip"
+  ],
+
+  "postCreateCommand": [
+    "bash", "-c",
+    "echo 'Post-create setup complete. Ready for development!'"
+  ],
+
+  "remoteUser": "vscode"
+}
