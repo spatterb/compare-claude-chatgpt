@@ -1,0 +1,42 @@
+// .devcontainer/devcontainer.json
+{
+  "name": "Ubuntu 24.04 Python 3.12 Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
+  },
+
+  // Example VS Code settings and extensions
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "editor.formatOnSave": true,
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+
+  // Runs once after the container is created, before it's started
+  "onCreateCommand": "echo 'Running initial setup script...'",
+
+  // Runs once after the container is started
+  "postCreateCommand": "pip install --upgrade pip && pip install requests",
+
+  // Optional: forward ports for debugging web apps
+  "forwardPorts": [8000],
+
+  // Optional: mount source as workspace
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+}
