@@ -1,6 +1,6 @@
 // .devcontainer/devcontainer.json
 {
-  "name": "Ubuntu 24.04 Python 3.12 Dev Container",
+  "name": "Ubuntu Chat",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
 
   "features": {
@@ -12,30 +12,38 @@
   // Example VS Code settings and extensions
   "customizations": {
     "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.pylint",
+        "ms-python.vscode-pylance",
+        "ms-vscode.vscode-json"
+        "ms-python.black-formatter",
+        "ms-toolsai.jupyter"
+      ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python3",
         "python.linting.enabled": true,
         "python.linting.pylintEnabled": true,
+        "python.formatting.provider": "black",
         "editor.formatOnSave": true,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true
         "terminal.integrated.defaultProfile.linux": "bash"
-      },
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-toolsai.jupyter",
-        "eamodio.gitlens"
-      ]
+      }
     }
   },
 
   // Runs once after the container is created, before it's started
-  "onCreateCommand": "echo 'Running initial setup script...'",
+  "onCreateCommand": "./touch onCreateCommand.txt",
 
   // Runs once after the container is started
-  "postCreateCommand": "pip install --upgrade pip && pip install requests",
+  "postCreateCommand": "./touch postCreateCommand.txt",
 
   // Optional: forward ports for debugging web apps
   "forwardPorts": [8000],
+  
+  // Set non-root user
+  "remoteUser": "vscode",
 
   // Optional: mount source as workspace
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
