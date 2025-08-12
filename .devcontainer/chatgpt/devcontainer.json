@@ -5,7 +5,7 @@
 
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12.11"
+      "version": "3.12"
     }
   },
 
@@ -34,14 +34,17 @@
   },
 
   // Runs once after the container is created, before it's started
-  "onCreateCommand": "./touch onCreateCommand.txt",
+  "onCreateCommand": "touch ./onCreateCommand.txt",
 
   // Runs once after the container is started
-  "postCreateCommand": "./touch postCreateCommand.txt",
+  "postCreateCommand": "touch ./postCreateCommand.txt",
+
+   // Runs after container is started
+  "postStartCommand": "echo 'Hello Ansible'",
 
   // Optional: forward ports for debugging web apps
   "forwardPorts": [8000],
-  
+
   // Set non-root user
   "remoteUser": "vscode",
 
