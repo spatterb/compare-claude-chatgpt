@@ -1,10 +1,10 @@
 {
-  "name": "Ubuntu Development Environment",
+  "name": "Ubuntu Claude",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
-  
+
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12"
+      "version": "3.12.10"
     }
   },
 
@@ -13,8 +13,10 @@
       "extensions": [
         "ms-python.python",
         "ms-python.pylint",
+        "ms-python.vscode-pylance",
+        "ms-vscode.vscode-json",
         "ms-python.black-formatter",
-        "ms-vscode.vscode-json"
+        "ms-toolsai.jupyter"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
@@ -24,19 +26,22 @@
         "editor.formatOnSave": true,
         "files.trimTrailingWhitespace": true,
         "files.insertFinalNewline": true
+        "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
   },
 
-  "onCreateCommand": [
-    "bash", "-c", 
-    "echo 'Container created, running initial setup...' && pip install --upgrade pip"
-  ],
+  "onCreateCommand": "./touch onCreateCommand.txt",
 
-  "postCreateCommand": [
-    "bash", "-c",
-    "echo 'Post-create setup complete. Ready for development!'"
-  ],
+  // Runs once after the container is started
+  "postCreateCommand": "./touch postCreateCommand.txt",
 
+  // Optional: forward ports for debugging web apps
+  "forwardPorts": [8000],
+
+  // Set non-root user
   "remoteUser": "vscode"
+
+  // Optional: mount source as workspace
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
 }
