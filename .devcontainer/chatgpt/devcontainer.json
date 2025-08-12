@@ -16,7 +16,7 @@
         "ms-python.python",
         "ms-python.pylint",
         "ms-python.vscode-pylance",
-        "ms-vscode.vscode-json"
+        "ms-vscode.vscode-json",
         "ms-python.black-formatter",
         "ms-toolsai.jupyter"
       ],
@@ -27,7 +27,7 @@
         "python.formatting.provider": "black",
         "editor.formatOnSave": true,
         "files.trimTrailingWhitespace": true,
-        "files.insertFinalNewline": true
+        "files.insertFinalNewline": true,
         "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
