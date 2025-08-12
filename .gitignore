@@ -1,3 +1,5 @@
 claude-extensions
 claude-settings.json
 chat-settings
+onCreateCommand.txt
+postCreateCommand.txt
